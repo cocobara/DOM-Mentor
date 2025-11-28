@@ -1,0 +1,70 @@
+*,*::after,*::before{
+    box-sizing: inherit;
+}
+body{
+    background-image: url(Background.png);
+    font-size: 16px;
+    line-height: 1.2;
+    display: flex;
+    justify-content: center;
+}
+.container{
+    padding: 30px;
+    max-width: 800px;
+
+}
+.container .box{
+    position: relative;
+    margin-bottom: 20px;
+}
+.container .box:last-child{
+    margin-bottom: 0;
+}
+
+.container .box .label{
+    border-radius: 8px;
+
+    font-weight: 600;
+    font-size: 18px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+align-items: center;
+    position: relative;
+    padding: 20px;
+    background-color: #fff;
+    color:black;
+    cursor: pointer;
+}
+.container .box .label::after{
+    content: '+';
+    position: relative;
+    top: 50%;
+    transform: translateY((-50%));
+    right: 20px;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.container .box.active .label::after{
+
+    content:"\2014";
+}
+.box.active .label{
+    border-bottom: 1px solid gray;
+
+    border-radius: 8px 8px 0 0;
+}
+
+.container .box .content{
+    border-radius:0 0 8px 8px;
+
+    position: relative;
+    background-color: #fff;
+    overflow: hidden;
+    max-height: 0;
+    transition:.4s;
+}
+.container .box .content p{
+    padding: 14px;
+}

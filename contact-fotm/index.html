@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact form</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>Contact Us</h1>
+    <form action="/" id="form" name="myform">
+      <fieldset class="user-info">
+        <div class="names">
+          <div class="first-name">
+            <label for="first-name">First Name<span> *</span></label>
+            <input type="text" name="first-name" id="first-name" required>
+            <span class="error-message" id="first-name-error">This field is required</span>
+          </div>
+          <div class="last-name">
+            <label for="last-name">Last Name<span> *</span></label>
+            <input type="text" name="last-name" id="last-name" required>
+            <span class="error-message" id="last-name-error">This field is required</span>
+          </div>
+        </div>
+
+        <label for="email">Email Address<span> *</span></label>
+        <input type="text" name="email" id="email" autocomplete="email" aria-invalid="true" aria-describedby="email-error" required>
+        <span class="error-message" id="invalid-email-error">Please enter a valid email address</span>
+        <span class="error-message" id="no-email-error">This field is required</span>
+      </fieldset>
+
+      <fieldset class="query-type">
+        <legend>Query Type<span> *</span></legend>
+        <div class="container">
+          <input type="radio" name="query-type" id="general-enquiry" value="general-enquiry" required>
+          <label for="general-enquiry">General Enquiry</label><br>
+          <input type="radio" name="query-type" id="support-request" value="support-request" required>
+          <label for="support-request">Support Request</label>
+        </div>
+        <span class="error-message" id="query-error">Please select a query type</span>
+      </fieldset>
+
+      <fieldset class="message">
+        <label for="message">Message<span> *</span></label>
+        <textarea name="message" id="message" aria-describedby="message-error" required></textarea>
+        <span class="error-message" id="message-error">This field is required</span>
+      </fieldset>
+
+      <fieldset>
+        <div class="consent">
+          <input type="checkbox" name="consent" id="consent" class="consent-checkbox" required>
+          <label for="consent">I consent to being contacted by the team</label>
+        </div>
+        <span class="error-message" id="consent-error">To submit this form, please consent to being contacted</span>
+      </fieldset>
+      <button type="submit" class="submit-button">Submit</button>
+    </form>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+body {
+    font-family: "Inter", sans-serif;
+}
+
+.app {
+    padding-top: 5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.wrap {
+    width: 500px;
+}
+
+$height: 46px;
+
+.select {
+    width: 100%;
+    position: relative;
+
+    &.open {
+        .select__dropdown {
+            display: block;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .select__input {
+            border: 2px solid #646bcf;
+
+            border-radius: 5px 5px 0 0;
+        }
+
+        ::-webkit-scrollbar {
+            width: 0;
+        }
+
+    }
+
+    &__input {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        height: $height;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 1rem;
+        cursor: pointer;
+
+
+
+    }
+
+    &__dropdown {
+        display: none;
+        position: absolute;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        top: $height;
+        left: 0;
+        right: 0;
+        max-height: 150px;
+        overflow-y: auto;
+    }
+
+    &__list {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    &__item {
+        padding: 1rem;
+        border-bottom: 1px solid #ccc;
+
+        &:hover {
+            background-color: rgb(196, 203, 223);
+            cursor: pointer;
+            transition: .15s background-color ease-in;
+        }
+
+        &.selected {
+            background-color: #ccc;
+        }
+    }
+}
+
+.img-up {
+    transform: rotate(180deg);
+}
