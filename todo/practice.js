@@ -3,14 +3,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const input = document.getElementById('todo-input');
     const tasksList = document.getElementById('todo-list');
     const cancelBtn = document.querySelector('.cancel-btn');
-    const addBtn = document.querySelector('.add-btn');
     const modalWindow = document.querySelector('.modalOverlay');
     const plusTask = document.querySelector('.plusTask');
     const emptyPage = document.querySelector('.empty-page');
     const searchInput = document.querySelector('.search__input');
+    const selectCurrent = document.querySelector('.select__current');
 
     let tasks = [];
     let filteredTasks = [];
+
     searchInput.addEventListener('input', () => {
         const query = searchInput.value.toLowerCase();
         filteredTasks = [];
@@ -19,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 filteredTasks.push(tasks[i]);
             }
         }
-        renderTasks(filteredTasks);
+        renderTasks(getCurrentTaskList());
     });
 
     tasksList.addEventListener('click', (e) => {
@@ -31,12 +32,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (e.target.tagName === 'SPAN' || e.target.classList.contains('markAsCompleted')) {
             task.completed = !task.completed;
-            renderTasks(filteredTasks.length > 0 ? filteredTasks : tasks);
+            renderTasks(getCurrentTaskList());
         }
 
         if (e.target.classList.contains('delete-btn')) {
             tasks = tasks.filter((task) => task.id !== taskId);
-            renderTasks(filteredTasks.length > 0 ? filteredTasks : tasks);
+            if (filteredTasks.length > 0) {
+                filteredTasks = filteredTasks.filter((task) => task.id !== taskId);
+            }
+            renderTasks(getCurrentTaskList());
         }
 
         if (e.target.classList.contains('edit-btn')) {
@@ -52,21 +56,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
             inputField.addEventListener('blur', () => {
                 task.text = inputField.value.trim() || originalText;
-                renderTasks(filteredTasks.length > 0 ? filteredTasks : tasks);
+                renderTasks(getCurrentTaskList());
             });
 
             inputField.addEventListener('keydown', (event) => {
                 if (event.key === 'Enter') {
                     task.text = inputField.value.trim() || originalText;
-                    renderTasks(filteredTasks.length > 0 ? filteredTasks : tasks);
+                    renderTasks(getCurrentTaskList());
                 }
             });
-        }
-
-        if (tasks.length == 0) {
-            emptyPage.style.display = '';
-        } else {
-            emptyPage.style.display = 'none';
         }
     });
 
@@ -80,15 +78,10 @@ document.addEventListener("DOMContentLoaded", function () {
             text: input.value,
             completed: false,
         };
+
         tasks.push(newTask);
         filteredTasks = tasks;
         renderTasks(filteredTasks);
-
-        if (tasks.length == 0) {
-            emptyPage.style.display = '';
-        } else {
-            emptyPage.style.display = 'none';
-        }
 
         input.value = "";
         modalWindow.style.display = 'none';
@@ -102,6 +95,10 @@ document.addEventListener("DOMContentLoaded", function () {
     plusTask.addEventListener('click', () => {
         modalWindow.style.display = '';
     });
+
+    function getCurrentTaskList() {
+        return filteredTasks.length > 0 ? filteredTasks : tasks;
+    }
 
     function renderTasks(taskList) {
         tasksList.innerHTML = taskList
@@ -120,5 +117,51 @@ document.addEventListener("DOMContentLoaded", function () {
             `
             )
             .join("");
+        if (tasks.length) {
+            emptyPage.style.display = 'none';
+        } else {
+            emptyPage.style.display = 'flex';
+        }
     }
+
+    function filterTasksByStatus(status) {
+        let filtered = [];
+        if (status === "COMPLETE") {
+            filtered = tasks.filter(task => task.completed === true);
+        } else if (status === "INCOMPLETE") {
+            filtered = tasks.filter(task => task.completed === false);
+        } else {
+            filtered = tasks;
+        }
+        filteredTasks = filtered;
+        renderTasks(filtered);
+    }
+
+    let select = function () {
+        let selectHeader = document.querySelectorAll('.select__header');
+        let selectItem = document.querySelectorAll('.select__item');
+
+        selectHeader.forEach(item => {
+            item.addEventListener('click', selectToggle);
+        });
+
+        selectItem.forEach(item => {
+            item.addEventListener('click', selectChoose);
+        });
+
+        function selectToggle() {
+            this.parentElement.classList.toggle('is-active');
+        }
+
+        function selectChoose() {
+            let text = this.innerText;
+            let select = this.closest('.select');
+            let currentText = select.querySelector('.select__current');
+            currentText.innerText = text;
+            select.classList.add('is-active');
+            filterTasksByStatus(text);
+        }
+    };
+
+    select();
 });
