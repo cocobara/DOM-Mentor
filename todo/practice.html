@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="name">
+                <p class="logo"> ToDo List</p>
+            </div>
+            <div class="utilities">
+                <form class="search">
+                    <input class="search__input" type="text" placeholder="Искать здесь...">
+                    <button class="search__btn" type="submit"><img src="icon/search.svg" alt=""></button>
+                </form>
+                <div class="select is-active">
+                    <div class="select__header">
+                        <span class="select__current">ALL</span>
+                    </div>
+                    <div class="select__body">
+                        <div class="select__item">ALL</div>
+
+                        <div class="select__item">COMPLETE</div>
+                        <div class="select__item">INCOMPLETE</div>
+                    </div>
+
+                </div>
+                <button class="dark-mode"><img src="icon/moon.svg" alt=""></button>
+            </div>
+
+        </header>
+
+        <div class="modalOverlay">
+            <div class="modal-window">
+                <div class="logo">NEW NOTE</div>
+                <form class="modal-todo" id="todo-form">
+                    <input type="text" id="todo-input" placeholder="Добавить новую задачу..." required>
+                    <div class="buttons">
+                        <button class="cancel-btn" type="button">Отмена</button>
+                        <button class="add-btn" type="submit">Добавить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="empty-page">
+            <img id="detective" src="icon/Detective-check-footprint 1.svg" alt="">
+            <span class="logo">EMPTY...</span>
+        </div>
+
+        <ul class="tasks" id="todo-list">
+
+        </ul>
+        <button class="plusTask"><img src="icon/plus.svg" alt=""></button>
+
+    </div>
+
+    <script src="practice.js"></script>
+
+</body>
+
+</html>

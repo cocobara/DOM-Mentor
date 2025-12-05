@@ -1,0 +1,282 @@
+:root {
+    --violet-clt: #7A61D2;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    margin: 40px 0;
+}
+
+.name {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.logo {
+    padding: 20px;
+    font-size: 24px;
+}
+
+.utilities {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    width: 750px;
+}
+
+.search {
+    position: relative;
+    width: 595px;
+}
+
+.search__input,
+.search__btn {
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+
+.search__input {
+    width: 100%;
+    height: 42px;
+    background: #fff;
+    border: 1px solid var(--violet-clt);
+    border-radius: 5px;
+    padding-left: 15px;
+}
+
+.search__btn {
+    height: 26px;
+    width: 26px;
+    position: absolute;
+    top: 10px;
+    right: 8px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.select.is-active .select__header {
+    border-radius: 5px;
+}
+
+.select {
+    max-height: 38px;
+    height: 100%;
+    width: 85px;
+}
+
+.select__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 38px;
+    border: 1px solid var(--violet-clt);
+    cursor: pointer;
+}
+
+.select__current {
+    font-size: 12px;
+    padding: 4px;
+    line-height: 18px;
+}
+
+.select__body {
+    border-radius: 0 0 5px 5px;
+    border: 1px solid var(--violet-clt);
+}
+
+.select.is-active .select__body {
+    display: none;
+}
+
+.select__item {
+    cursor: pointer;
+    font-size: 10px;
+    line-height: 16px;
+    padding: 3px;
+}
+
+.select__item:hover {
+    background-color: #7A61D2;
+    opacity: 0.3;
+}
+
+.dark-mode {
+    align-items: center;
+
+    background-color: var(--violet-clt);
+    height: 38px;
+    width: 38px;
+    border: none;
+    border-radius: 5px;
+}
+
+.modalOverlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    background: rgba(0, 0, 0, .5);
+}
+
+.modal-window {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    z-index: 1000;
+    position: relative;
+    padding: 30px 0 10px 0;
+
+    height: 290px;
+    width: 500px;
+
+    border: 1px solid var(--violet-clt);
+    border-radius: 16px;
+    background: #fff;
+}
+
+.modal-todo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 150px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+
+    width: 400px;
+}
+
+.cancel-btn,
+.add-btn {
+    border: none;
+    height: 38px;
+    width: 110px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.cancel-btn {
+    border: 1px solid var(--violet-clt);
+    background-color: #fff;
+    color: var(--violet-clt);
+}
+
+.add-btn {
+    background-color: var(--violet-clt);
+    color: #fff;
+}
+
+.empty-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    height: 130px;
+}
+
+#detective {
+    height: 230px;
+}
+
+.tasks {
+    display: flex;
+    flex-direction: column;
+
+    margin: 0 auto;
+    width: 520px;
+}
+
+.list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    text-align: center;
+
+    padding-bottom: 20px;
+    width: 520px;
+}
+
+.list:not(:last-child) {
+    border-bottom: 2px solid var(--violet-clt);
+}
+
+.list:not(:first-child) {
+    padding-top: 20px;
+}
+
+.elem {
+    display: flex;
+    align-items: center;
+}
+
+
+.completed {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.markAsCompleted {
+    height: 26px;
+    width: 26px;
+    margin-right: 12px;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid var(--violet-clt);
+}
+
+.markAsCompleted.completed-btn {
+    background-color: var(--violet-clt);
+    content: \f007;
+}
+
+.delete-btn,
+.edit-btn {
+    padding-left: 15px;
+    background-color: #fff;
+    border: none;
+}
+
+.edit-input {
+    border: none;
+    outline: none;
+}
+
+.plusTask {
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 30px;
+    height: 50px;
+    width: 50px;
+    background-color: var(--violet-clt);
+    border-radius: 50%;
+    border: none;
+}

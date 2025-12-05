@@ -1,0 +1,227 @@
+:root {
+    --clr-lightgreen: hsl(148, 38%, 91%);
+    --clr-mediumgreen: hsl(169, 82%, 27%);
+    --clr-red: hsl(0, 66%, 54%);
+    --clr-white: hsl(0, 0%, 100%);
+    --clr-mediumgrey: hsl(186, 15%, 59%);
+    --clr-darkgrey: hsl(187, 24%, 22%);
+    --fontsize-labels: 16px;
+    --fontweight-regular: 400;
+    --fontweight-bold: 700;
+}
+
+body {
+    background-color: var(--clr-lightgreen);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Karla";
+    padding: 15px 5px;
+}
+
+main {
+    padding: 30px;
+    width: 735px;
+    max-width: 900px;
+    max-height: 800px;
+    background-color: var(--clr-white);
+    border-radius: 15px;
+    padding: 10px 20px 40px 20px;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+}
+
+h1 {
+    margin: 15px 0;
+    color: var(--clr-darkgrey);
+    font-weight: 700;
+}
+
+fieldset {
+    border: none;
+    padding: 0;
+}
+
+.names {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.first-name,
+.last-name {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 48%;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+legend {
+    margin: 20px 0 15px 0;
+}
+
+.query-type {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.message {
+    height: 92px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.consent {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    margin: 60px 0 10px 0;
+}
+
+input[type=checkbox] {
+    display: none;
+}
+
+.consent label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.consent label::before {
+    content: '';
+    height: 18px;
+    width: 18px;
+    border: solid grey 2px;
+    margin-right: 20px;
+}
+
+input[type=checkbox]:checked + label::before {
+    content: \00D7;
+    border: none;
+}
+
+input[type=text],
+input[type=email] {
+    border: solid var(--clr-mediumgrey) 1px;
+    border-radius: 10px;
+    height: 50px;
+    padding: 0 15px;
+}
+
+input[type='radio'] {
+    display: none;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.container label {
+    width: 44%;
+    position: relative;
+    border: solid var(--clr-mediumgrey) 1px;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.container > label::before {
+    content: '';
+    height: 21px;
+    width: 20px;
+    border: solid grey 1px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+input[type='radio']:checked + label {
+    background-color: var(--clr-lightgreen);
+}
+
+input[type='radio']:checked + label::before {
+    content: "\00D7";
+    border: none;
+}
+
+textarea {
+    border: solid var(--clr-mediumgrey) 1px;
+    border-radius: 10px;
+    height: 240px;
+    padding: 10px 15px;
+    font-family: "Karla";
+}
+
+.submit-button {
+    width: 100%;
+    background-color: var(--clr-mediumgreen);
+    color: var(--clr-white);
+    padding: 20px;
+    border-radius: 7px;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-top: 20px;
+}
+
+label,
+legend {
+    color: var(--clr-darkgrey);
+}
+
+span {
+    color: var(--clr-mediumgreen);
+    margin-left: 2px;
+}
+
+input:hover,
+.radio:hover,
+.consent > label:hover,
+.submit-button {
+    cursor: pointer;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    cursor: text;
+    border: solid var(--clr-mediumgreen) 2px;
+}
+
+.error-message {
+    color: var(--clr-red);
+    display: none;
+}
+
+input.error,
+textarea.error {
+    border: solid var(--clr-red) 2px;
+}
+
+.error-message {
+    color: var(--clr-red);
+    display: none;
+    font-size: 0.9rem;
+}
+
+input.error + .error-message,
+textarea.error + .error-message {
+    display: block;
+}
